@@ -20,6 +20,7 @@ public class Principal {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("labjpa");
         EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
         UsuarioRepositorio usuarioRepositorio =
                 new UsuarioJpaRepositorioImpl().setEm(em);
         
@@ -29,6 +30,17 @@ public class Principal {
                 usuario.getNombre(),
                 usuario.getApellido());
         
+        Usuario otroUsuario = usuarioRepositorio.buscar(2L);
+       // Usuario nuevo = new Usuario();
+       // nuevo.setNombre("MJ");
+       // nuevo.setApellido("Fernandez");
+       // usuarioRepositorio.crear(nuevo);
+        
+       // Usuario existente = usuarioRepositorio.buscar(nuevo.getId());
+       // System.out.println(nuevo.equals(existente));
+       // System.out.println(nuevo == existente);
+        System.out.println("edad: "+otroUsuario.getEdad());
+        em.getTransaction().commit();
         em.close();
         emf.close();
     }

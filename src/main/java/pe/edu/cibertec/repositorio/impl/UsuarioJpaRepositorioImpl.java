@@ -27,5 +27,15 @@ public class UsuarioJpaRepositorioImpl implements UsuarioRepositorio{
     public void crear(Usuario usuario) {
         em.persist(usuario);
     }
+
+    @Override
+    public void actualizar(Usuario usuario) {
+        em.merge(usuario);
+    }
+
+    @Override
+    public void eliminar(Usuario usuario) {
+       em.remove(usuario);
+    }
     
 }
