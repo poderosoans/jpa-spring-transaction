@@ -5,6 +5,7 @@
  */
 package pe.edu.cibertec.repositorio;
 
+import java.util.List;
 import pe.edu.cibertec.dominio.Producto;
 
 /**
@@ -16,4 +17,7 @@ public interface ProductoRepositorio {
     void crear (Producto producto);
     void actualizar(Producto producto);
     void eliminar(Producto producto);
+    
+    // Solo para pruebas
+    List<Producto> obtenerTodos();
 }

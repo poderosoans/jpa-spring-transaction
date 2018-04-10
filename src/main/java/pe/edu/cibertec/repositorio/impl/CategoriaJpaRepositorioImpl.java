@@ -13,11 +13,11 @@ import pe.edu.cibertec.repositorio.CategoriaRepositorio;
  *
  * @author Poderosoans
  */
-public class CategoriaRepositorioImpl implements CategoriaRepositorio{
+public class CategoriaJpaRepositorioImpl implements CategoriaRepositorio{
     
     private EntityManager em;
     
-    public CategoriaRepositorioImpl setEm(EntityManager em) {
+    public CategoriaJpaRepositorioImpl setEm(EntityManager em) {
         this.em = em;
         return this;
     }

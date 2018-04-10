@@ -5,7 +5,9 @@
  */
 package pe.edu.cibertec.repositorio.impl;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import pe.edu.cibertec.dominio.Producto;
 import pe.edu.cibertec.repositorio.ProductoRepositorio;
 
@@ -13,11 +15,11 @@ import pe.edu.cibertec.repositorio.ProductoRepositorio;
  *
  * @author Poderosoans
  */
-public class ProductoRepositorioImpl implements ProductoRepositorio{
+public class ProductoJpaRepositorioImpl implements ProductoRepositorio{
     
     private EntityManager em;
     
-    public ProductoRepositorioImpl setEm(EntityManager em) {
+    public ProductoJpaRepositorioImpl setEm(EntityManager em) {
         this.em = em;
         return this;
     }
@@ -40,6 +42,14 @@ public class ProductoRepositorioImpl implements ProductoRepositorio{
     @Override
     public void eliminar(Producto producto) {
         em.remove(producto);
+    }
+    
+    private static final String SELECT_PRODUCTOS = "SELECT p FROM Producto p JOIN p.categoria c";
+    
+    @Override
+    public List<Producto> obtenerTodos() {
+        TypedQuery<Producto> query = em.createQuery(SELECT_PRODUCTOS,Producto.class);
+        return query.getResultList();
     }
     
 }

@@ -3,6 +3,8 @@
   <persistence-unit name="labjpa" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>pe.edu.cibertec.dominio.Usuario</class>
+    <class>pe.edu.cibertec.dominio.Categoria</class>
+    <class>pe.edu.cibertec.dominio.Producto</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tienda?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

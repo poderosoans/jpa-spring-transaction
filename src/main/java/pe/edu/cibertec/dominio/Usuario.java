@@ -2,6 +2,9 @@
 package pe.edu.cibertec.dominio;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -72,6 +75,8 @@ public class Usuario implements Serializable {
     
     @PostLoad
     public void despuesCargarEntidad() {
-        // Método
+        LocalDate ahora = LocalDate.now();
+        LocalDate fechaNacimiento = this.fechaNacimiento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        edad = (int)fechaNacimiento.until(ahora, ChronoUnit.YEARS);
     }
 }

@@ -9,15 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import pe.edu.cibertec.dominio.base.EntidadBase;
 
 @Entity
 @Table(name = "tab_producto")
-public class Producto implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Producto extends EntidadBase{
     @Basic
     private String nombre;
     @Basic
@@ -26,13 +26,19 @@ public class Producto implements Serializable{
     private BigDecimal precio;
     @Lob // Para un tipo de dato binario 
     private byte[] imagen;
+    
+    // MUCHOS productos pueden tener UNA categoría
+    @ManyToOne (optional = false) // Nunca sera nula la relacion y usara Inner join
+    // En JoinColumn indicamos el NOMBRE de la COLUMNA en la tabla PRODUCTO para la referencia a la tabla CATEGORÍA
+    @JoinColumn(name = "id_categoria")        
+    private Categoria categoria;
 
-    public Long getId() {
-        return id;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public String getNombre() {

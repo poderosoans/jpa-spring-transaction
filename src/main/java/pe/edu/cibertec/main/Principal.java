@@ -5,12 +5,16 @@
  */
 package pe.edu.cibertec.main;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import pe.edu.cibertec.dominio.Producto;
 import pe.edu.cibertec.dominio.Usuario;
+import pe.edu.cibertec.repositorio.ProductoRepositorio;
 import pe.edu.cibertec.repositorio.UsuarioRepositorio;
 import pe.edu.cibertec.repositorio.impl.UsuarioJpaRepositorioImpl;
+import pe.edu.cibertec.repositorio.impl.ProductoJpaRepositorioImpl;
 
 /**
  *
@@ -21,6 +25,7 @@ public class Principal {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("labjpa");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
+       /*
         UsuarioRepositorio usuarioRepositorio =
                 new UsuarioJpaRepositorioImpl().setEm(em);
         
@@ -31,6 +36,7 @@ public class Principal {
                 usuario.getApellido());
         
         Usuario otroUsuario = usuarioRepositorio.buscar(2L);
+        
        // Usuario nuevo = new Usuario();
        // nuevo.setNombre("MJ");
        // nuevo.setApellido("Fernandez");
@@ -40,6 +46,15 @@ public class Principal {
        // System.out.println(nuevo.equals(existente));
        // System.out.println(nuevo == existente);
         System.out.println("edad: "+otroUsuario.getEdad());
+        */
+       
+       ProductoRepositorio productoRepositorio = new ProductoJpaRepositorioImpl().setEm(em);
+       Producto producto = productoRepositorio.buscar(1L);
+       System.out.println(producto.getId()+ " " + producto.getNombre() + " " + producto.getCategoria().getNombre());
+       
+       List<Producto> productoLista = productoRepositorio.obtenerTodos();
+       productoLista.forEach(pr -> System.out.println(pr.getNombre() +" "+ pr.getCategoria().getNombre()));
+       
         em.getTransaction().commit();
         em.close();
         emf.close();
