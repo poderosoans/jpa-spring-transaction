@@ -20,4 +20,6 @@ public interface ProductoRepositorio {
     
     // Solo para pruebas
     List<Producto> obtenerTodos();
+    
+    List<Producto> obtenerPorCategoria(Long idCategoria);
 }

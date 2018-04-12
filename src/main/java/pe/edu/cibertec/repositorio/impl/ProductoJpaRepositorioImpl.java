@@ -51,5 +51,12 @@ public class ProductoJpaRepositorioImpl implements ProductoRepositorio{
         TypedQuery<Producto> query = em.createQuery(SELECT_PRODUCTOS,Producto.class);
         return query.getResultList();
     }
+
+    @Override
+    public List<Producto> obtenerPorCategoria(Long idCategoria) {
+        TypedQuery<Producto> query = em.createNamedQuery("nq_obtener_productos_por_categoria", Producto.class);
+        query.setParameter("idCategoria", idCategoria);
+        return query.getResultList();
+    }
     
 }

@@ -12,11 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import pe.edu.cibertec.dominio.base.EntidadBase;
 
 @Entity
 @Table(name = "tab_producto")
+@NamedQueries(
+        @NamedQuery(name = "nq_obtener_productos_por_categoria",
+        query = "SELECT p FROM Producto p WHERE p.categoria.id = :idCategoria")
+)
 public class Producto extends EntidadBase{
     @Basic
     private String nombre;
