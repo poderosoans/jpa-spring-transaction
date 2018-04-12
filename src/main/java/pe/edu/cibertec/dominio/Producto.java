@@ -20,10 +20,11 @@ import pe.edu.cibertec.dominio.base.EntidadBase;
 @Entity
 @Table(name = "tab_producto")
 @NamedQueries(
-        @NamedQuery(name = "nq_obtener_productos_por_categoria",
+        @NamedQuery(name = Producto.NQ_OBTENER_PRODUCTOS_POR_CATEGORIA,
         query = "SELECT p FROM Producto p WHERE p.categoria.id = :idCategoria")
 )
 public class Producto extends EntidadBase{
+    public static final String NQ_OBTENER_PRODUCTOS_POR_CATEGORIA = "nq_obtener_productos_por_categoria";
     @Basic
     private String nombre;
     @Basic

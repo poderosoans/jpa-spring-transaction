@@ -69,7 +69,7 @@ public class Principal {
        */
        
        ProductoRepositorio productoRepositorio = new ProductoJpaRepositorioImpl().setEm(em);
-       List<Producto> productosLista = productoRepositorio.obtenerPorCategoria(1L);
+       List<Producto> productosLista = productoRepositorio.obtenerPorCategoriaCriteriaApi(1L);
        productosLista.forEach(producto -> {
            System.out.println(producto.getNombre() +" "+ producto.getCategoria().getNombre());
        });

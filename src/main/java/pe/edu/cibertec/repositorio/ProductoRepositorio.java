@@ -22,4 +22,6 @@ public interface ProductoRepositorio {
     List<Producto> obtenerTodos();
     
     List<Producto> obtenerPorCategoria(Long idCategoria);
+    
+    List<Producto> obtenerPorCategoriaCriteriaApi(Long idCategoria);
 }

@@ -8,6 +8,9 @@ package pe.edu.cibertec.repositorio.impl;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import pe.edu.cibertec.dominio.Producto;
 import pe.edu.cibertec.repositorio.ProductoRepositorio;
 
@@ -54,8 +57,20 @@ public class ProductoJpaRepositorioImpl implements ProductoRepositorio{
 
     @Override
     public List<Producto> obtenerPorCategoria(Long idCategoria) {
-        TypedQuery<Producto> query = em.createNamedQuery("nq_obtener_productos_por_categoria", Producto.class);
+        TypedQuery<Producto> query = em.createNamedQuery(Producto.NQ_OBTENER_PRODUCTOS_POR_CATEGORIA, Producto.class);
         query.setParameter("idCategoria", idCategoria);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Producto> obtenerPorCategoriaCriteriaApi(Long idCategoria) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Producto> cq = cb.createQuery(Producto.class);
+        Root<Producto> producto = cq.from(Producto.class);
+        cq.select(producto).where(
+                cb.equal(producto.get("categoria").get("id"), idCategoria)
+        ).orderBy(cb.asc(producto.get("nombre")));
+        TypedQuery<Producto> query = em.createQuery(cq);
         return query.getResultList();
     }
     
