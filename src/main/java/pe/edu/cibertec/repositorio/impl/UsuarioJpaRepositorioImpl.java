@@ -22,7 +22,17 @@ public class UsuarioJpaRepositorioImpl implements UsuarioRepositorio{
     public Usuario buscar(Long id) {
         return em.find(Usuario.class, id);
     }
-
+    /*
+    @Override
+    public Usuario buscar(String nombre) {
+        TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.nombre = :nombre", Usuario.class);
+        try{
+            return
+        }catch (){
+            return null;
+        }
+    }
+    */
     @Override
     public void crear(Usuario usuario) {
         em.persist(usuario);
