@@ -8,6 +8,7 @@ package pe.edu.cibertec.dominio;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,19 +25,10 @@ import pe.edu.cibertec.dominio.base.EntidadBase;
  */
 @Entity
 public class Carrito extends EntidadBase{
-  
+    @Basic 
     private BigDecimal total;
     
-    @Column(name="fecha_creacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCreacion;
-    
-    @Column(name="fecha_compra")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCompra;
-    
-    @Column(name="direccion_envio")
-    private String direccionEnvio;
+    @Basic
     private boolean activo;
     
     /*
@@ -59,30 +51,6 @@ public class Carrito extends EntidadBase{
 
     public void setTotal(BigDecimal total) {
         this.total = total;
-    }
-
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public Date getFechaCompra() {
-        return fechaCompra;
-    }
-
-    public void setFechaCompra(Date fechaCompra) {
-        this.fechaCompra = fechaCompra;
-    }
-
-    public String getDireccionEnvio() {
-        return direccionEnvio;
-    }
-
-    public void setDireccionEnvio(String direccionEnvio) {
-        this.direccionEnvio = direccionEnvio;
     }
 
     public boolean isActivo() {

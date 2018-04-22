@@ -39,6 +39,10 @@ public class Producto extends EntidadBase{
     // En JoinColumn indicamos el NOMBRE de la COLUMNA en la tabla PRODUCTO para la referencia a la tabla CATEGORÍA
     @JoinColumn(name = "id_categoria")        
     private Categoria categoria;
+    
+    @ManyToOne (optional = false)
+    @JoinColumn(name = "id_marca")
+    private Marca marca;
 
     public Categoria getCategoria() {
         return categoria;

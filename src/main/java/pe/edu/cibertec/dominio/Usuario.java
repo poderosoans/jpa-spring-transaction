@@ -1,32 +1,33 @@
 
 package pe.edu.cibertec.dominio;
 
-import java.io.Serializable;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.PostLoad;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import pe.edu.cibertec.dominio.base.EntidadBase;
 
 /**
  *
  * @author Roger P.
  */
 @Entity
-public class Usuario implements Serializable {
+public class Usuario extends EntidadBase {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto (JPA se encarga de evaluar) | Sequence: indicar cual es la secuencia que hibernate debe usar SequenceGenerator | Table: Tabla de contadores
-    private Long id;
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto (JPA se encarga de evaluar) | Sequence: indicar cual es la secuencia que hibernate debe usar SequenceGenerator | Table: Tabla de contadores
+    //private Long id;
     @Basic // Nombre de atributo es el nombre de la columna
     private String nombre;
     private String apellido;
@@ -37,12 +38,26 @@ public class Usuario implements Serializable {
     @Transient
     private transient Integer edad; // Transient: No necesita ser serializado (En JPA no es una columa en BD, no lo envía o interactura) 
     
-    public Long getId() {
-        return id;
+    @Basic
+    private String email;
+    @Basic
+    private String password;
+    @Basic
+    private String telefono;
+    @Basic
+    private String sexo;
+    @Basic
+    private String dni;
+    
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    private List<Usuario> usuarioList;
+
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
     }
 
     public String getNombre() {
@@ -79,4 +94,46 @@ public class Usuario implements Serializable {
         LocalDate fechaNacimiento = this.fechaNacimiento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         edad = (int)fechaNacimiento.until(ahora, ChronoUnit.YEARS);
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+    
+    
 }
