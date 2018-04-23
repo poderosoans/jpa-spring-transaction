@@ -5,6 +5,7 @@
  */
 package pe.edu.cibertec.repositorio;
 
+import java.util.List;
 import pe.edu.cibertec.dominio.Categoria;
 
 /**
@@ -16,4 +17,5 @@ public interface CategoriaRepositorio {
     void crear (Categoria categoria);
     void actualizar(Categoria categoria);
     void eliminar(Categoria categoria);
+    List<Categoria> obtenerTodos();
 }

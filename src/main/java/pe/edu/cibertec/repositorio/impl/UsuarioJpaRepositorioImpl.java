@@ -2,6 +2,7 @@
 package pe.edu.cibertec.repositorio.impl;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import pe.edu.cibertec.dominio.Usuario;
 import pe.edu.cibertec.repositorio.UsuarioRepositorio;
 
@@ -46,6 +47,19 @@ public class UsuarioJpaRepositorioImpl implements UsuarioRepositorio{
     @Override
     public void eliminar(Usuario usuario) {
        em.remove(usuario);
+    }
+
+    @Override
+    public Usuario login(String email, String password) {
+        
+        try { 
+            Usuario user = (Usuario) em.createQuery( "SELECT u from Usuario u where u.email = :email and u.password = :password") 
+            .setParameter("email", email).setParameter("password", password).getSingleResult(); 
+            return user; 
+        } catch (NoResultException e) {
+            return null; 
+        }
+
     }
     
 }

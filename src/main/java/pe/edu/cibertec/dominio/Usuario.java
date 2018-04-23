@@ -49,16 +49,18 @@ public class Usuario extends EntidadBase {
     @Basic
     private String dni;
     
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-    private List<Usuario> usuarioList;
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Direccion> direccionList;
 
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
+    public List<Direccion> getDireccionList() {
+        return direccionList;
     }
 
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
+    public void setDireccionList(List<Direccion> direccionList) {
+        this.direccionList = direccionList;
     }
+
+    
 
     public String getNombre() {
         return nombre;

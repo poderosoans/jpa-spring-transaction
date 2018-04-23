@@ -11,6 +11,9 @@ public interface UsuarioRepositorio {
     void crear (Usuario usuario);
     void actualizar(Usuario usuario);
     void eliminar(Usuario usuario);
+    
+    Usuario login(String email, String password);
+    
     default void eliminar(Long id) {
         eliminar(buscar(id));
     }

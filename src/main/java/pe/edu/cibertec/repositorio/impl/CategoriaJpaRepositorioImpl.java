@@ -5,7 +5,9 @@
  */
 package pe.edu.cibertec.repositorio.impl;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import pe.edu.cibertec.dominio.Categoria;
 import pe.edu.cibertec.repositorio.CategoriaRepositorio;
 
@@ -40,6 +42,14 @@ public class CategoriaJpaRepositorioImpl implements CategoriaRepositorio{
     @Override
     public void eliminar(Categoria categoria) {
         em.remove(categoria);
+    }
+    
+    private static final String SELECT_CATEGORIAS = "SELECT c FROM Categoria c";
+    
+    @Override
+    public List<Categoria> obtenerTodos() {
+        TypedQuery<Categoria> query = em.createQuery(SELECT_CATEGORIAS,Categoria.class);
+        return query.getResultList();
     }
     
 }

@@ -47,7 +47,7 @@ public class ProductoJpaRepositorioImpl implements ProductoRepositorio{
         em.remove(producto);
     }
     
-    private static final String SELECT_PRODUCTOS = "SELECT p FROM Producto p JOIN p.categoria c";
+    private static final String SELECT_PRODUCTOS = "SELECT p FROM Producto p JOIN p.categoria c JOIN p.marca";
     
     @Override
     public List<Producto> obtenerTodos() {
