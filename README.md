@@ -3,8 +3,8 @@
 ## Construido con
 
 * [Java](http://www.oracle.com/technetwork/java/javaee/overview/index.html) - Programming language
-* [JPA](http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html) - Java Persistence API
-* [Hibernate](http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html) - Implementación
+* [JPA](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html) - Java Persistence API
+* [Hibernate](http://hibernate.org/) - ImplementaciÃ³n
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 
 ## Base de datos

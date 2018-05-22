@@ -29,7 +29,7 @@ public class Carrito extends EntidadBase{
     private BigDecimal total;
     
     @Basic
-    private boolean activo;
+    private Integer activo;
     
     /*
     * OneToMany sirve para mapear un objeto de tipo Carrito a muchos objetos 
@@ -53,11 +53,11 @@ public class Carrito extends EntidadBase{
         this.total = total;
     }
 
-    public boolean isActivo() {
+    public Integer isActivo() {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setActivo(Integer activo) {
         this.activo = activo;
     }
 

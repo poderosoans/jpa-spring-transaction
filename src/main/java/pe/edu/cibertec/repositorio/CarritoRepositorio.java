@@ -6,4 +6,8 @@ import pe.edu.cibertec.dominio.Carrito;
 
 public interface CarritoRepositorio {
     List<Carrito> buscarPorUsuario(Long idUsuario);
+    
+    void crear (Carrito carrito);
+    
+    void actualizar(Carrito carrito);
 }

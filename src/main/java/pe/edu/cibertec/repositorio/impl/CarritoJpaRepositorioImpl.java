@@ -32,5 +32,15 @@ public class CarritoJpaRepositorioImpl implements CarritoRepositorio{
         return query.getResultList();
         
     }
+
+    @Override
+    public void crear(Carrito carrito) {
+        em.persist(carrito);
+    }
+
+    @Override
+    public void actualizar(Carrito carrito) {
+        em.merge(carrito);
+    }
     
 }

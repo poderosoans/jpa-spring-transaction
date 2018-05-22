@@ -19,14 +19,16 @@ public abstract class EntidadBase implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     
+    @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha_reg;
+    protected Date fecha_reg;
     
+    @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha_mod;
+    protected Date fecha_mod;
     
-    @Basic
-    private Integer estado;
+    @Column(nullable = true)
+    protected Integer estado;
     /*
     Ejemplo en caso que todas mias tablas tengan campos de auditoria
     protected Date fechaCreacion;
