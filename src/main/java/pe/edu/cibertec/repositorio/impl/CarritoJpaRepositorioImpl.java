@@ -7,21 +7,17 @@ package pe.edu.cibertec.repositorio.impl;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Repository;
 import pe.edu.cibertec.dominio.Carrito;
 import pe.edu.cibertec.repositorio.CarritoRepositorio;
 
-/**
- *
- * @author Java-LM
- */
+@Repository
 public class CarritoJpaRepositorioImpl implements CarritoRepositorio{
-    private EntityManager em;
     
-    public CarritoJpaRepositorioImpl setEm(EntityManager em) {
-        this.em = em;
-        return this;
-    }
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public List<Carrito> buscarPorUsuario(Long idUsuario) {

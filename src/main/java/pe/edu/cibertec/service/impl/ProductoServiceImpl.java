@@ -11,14 +11,14 @@ import pe.edu.cibertec.service.ProductoService;
 
 @Service
 @Transactional
-public class ProductoServiceImpl implements ProductoService{
+public class ProductoServiceImpl implements ProductoService {
     
     @Autowired
     private ProductoRepositorio productoRepositorio;
 
     @Override
     public Producto buscar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return productoRepositorio.buscar(id);
     }
 
     @Override
@@ -28,12 +28,12 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     public void actualizar(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        productoRepositorio.actualizar(producto);
     }
 
     @Override
     public void eliminar(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        productoRepositorio.eliminar(producto);
     }
     
     @Transactional(readOnly = true)
@@ -44,12 +44,12 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     public List<Producto> obtenerPorCategoria(Long idCategoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return productoRepositorio.obtenerPorCategoria(idCategoria);
     }
 
     @Override
     public List<Producto> obtenerPorCategoriaCriteriaApi(Long idCategoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return productoRepositorio.obtenerPorCategoriaCriteriaApi(idCategoria);
     }
     
 }

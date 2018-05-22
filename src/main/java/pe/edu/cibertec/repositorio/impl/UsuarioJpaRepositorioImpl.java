@@ -3,21 +3,16 @@ package pe.edu.cibertec.repositorio.impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
 import pe.edu.cibertec.dominio.Usuario;
 import pe.edu.cibertec.repositorio.UsuarioRepositorio;
 
-/**
- *
- * @author Roger P.
- */
+@Repository
 public class UsuarioJpaRepositorioImpl implements UsuarioRepositorio{
     
+    @PersistenceContext
     private EntityManager em;
-
-    public UsuarioJpaRepositorioImpl setEm(EntityManager em) {
-        this.em = em;
-        return this;
-    }
 
     @Override
     public Usuario buscar(Long id) {

@@ -31,11 +31,12 @@ public class TxManager {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+        DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean lcemfb =
                 new LocalContainerEntityManagerFactoryBean();
         lcemfb.setJpaVendorAdapter(getJpaVendorAdapter());
-        lcemfb.setDataSource(getDataSource());
+        lcemfb.setDataSource(dataSource);
         lcemfb.setPersistenceUnitName("myJpaPersistenceUnit");
         lcemfb.setPackagesToScan("pe.edu.cibertec.dominio");
         lcemfb.setJpaProperties(jpaProperties());
@@ -48,7 +49,7 @@ public class TxManager {
     }
 
     @Bean
-    public DataSource getDataSource() {
+    public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(env.getProperty("database.driverClassName"));
         dataSource.setUrl(env.getProperty("database.url"));
