@@ -17,7 +17,7 @@ public class DetalleCarritoServiceImpl implements DetalleCarritoService{
     
     @Override
     public void crear(DetalleCarrito detalleCarrito) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        detalleCarritoRepositorio.crear(detalleCarrito);
     }
     
 }

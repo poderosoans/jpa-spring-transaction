@@ -17,27 +17,27 @@ public class CategoriaServiceImpl implements CategoriaService{
     
     @Override
     public Categoria buscar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return categoriaRepositorio.buscar(id);
     }
 
     @Override
     public void crear(Categoria categoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        categoriaRepositorio.crear(categoria);
     }
 
     @Override
     public void actualizar(Categoria categoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        categoriaRepositorio.actualizar(categoria);
     }
 
     @Override
     public void eliminar(Categoria categoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        categoriaRepositorio.eliminar(categoria);
     }
 
     @Override
     public List<Categoria> obtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return categoriaRepositorio.obtenerTodos();
     }
     
 }

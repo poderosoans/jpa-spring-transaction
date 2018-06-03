@@ -17,27 +17,27 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public Usuario buscar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return usuarioRepositorio.buscar(id);
     }
 
     @Override
     public void crear(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        usuarioRepositorio.crear(usuario);
     }
 
     @Override
     public void actualizar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        usuarioRepositorio.actualizar(usuario);
     }
 
     @Override
     public void eliminar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        usuarioRepositorio.eliminar(usuario);
     }
 
     @Override
     public Usuario login(String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return usuarioRepositorio.login(email, password);
     }
     
 }
