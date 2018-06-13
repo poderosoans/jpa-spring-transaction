@@ -6,7 +6,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,6 +34,8 @@ public class Usuario extends EntidadBase {
     private String nombre;
     private String apellido;
     
+    private String username;
+    
     @Column(name="fecha_nacimiento")
     @Temporal(TemporalType.TIMESTAMP)  // Date (solo fecha) Time (solo tiempo) TIMESTAMP (date+time)
     private Date fechaNacimiento;
@@ -49,8 +53,30 @@ public class Usuario extends EntidadBase {
     @Basic
     private String dni;
     
+    @Basic
+    private boolean enabled;
+    
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Direccion> direccionList;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<UserRole> userRole = new HashSet<UserRole>(0);
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<UserRole> getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Set<UserRole> userRole) {
+        this.userRole = userRole;
+    }
 
     public List<Direccion> getDireccionList() {
         return direccionList;
@@ -60,7 +86,13 @@ public class Usuario extends EntidadBase {
         this.direccionList = direccionList;
     }
 
-    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getNombre() {
         return nombre;

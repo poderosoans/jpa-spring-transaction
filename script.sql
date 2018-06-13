@@ -1,4 +1,4 @@
-﻿drop database if exists tienda;
+drop database if exists tienda;
 
 create database tienda;
 
@@ -34,6 +34,7 @@ create table distrito(
 
 create table usuario(
   id bigint primary key auto_increment,
+  username varchar(40) not null,
   nombre varchar(100) not null,
   apellido varchar(100) not null,
   fecha_nacimiento datetime null,
@@ -44,7 +45,15 @@ create table usuario(
   dni varchar(8) not null,
   fecha_reg datetime null,
   fecha_mod datetime null,
-  estado tinyint DEFAULT 1
+  estado tinyint DEFAULT 1,
+  enabled tinyint DEFAULT 1
+);
+
+create table authorities(
+  id bigint primary key auto_increment,
+  authority varchar(40),
+  id_usuario bigint not null,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id) 
 );
 
 create table marca(
@@ -1039,7 +1048,7 @@ INSERT INTO `distrito` (`id`, `descripcion`, `id_provincia`, `fecha_reg`, `fecha
 (671, 'LA PERLA', 66, NULL, NULL),
 (672, 'LA PUNTA', 66, NULL, NULL),
 (673, 'VENTANILLA', 66, NULL, NULL),
-(674, 'MI PERÃš', 66, NULL, NULL),
+(674, 'MI PERÃ', 66, NULL, NULL),
 (685, 'CUSCO', 67, NULL, NULL),
 (686, 'CCORCA', 67, NULL, NULL),
 (687, 'POROY', 67, NULL, NULL),
@@ -2189,7 +2198,7 @@ INSERT INTO `distrito` (`id`, `descripcion`, `id_provincia`, `fecha_reg`, `fecha
 (1830, 'CURIMANA', 192, NULL, NULL),
 (1831, 'PURUS', 193, NULL, NULL);
 
-insert into usuario values (null, 'Roger', 'Pomacarhua', '1994-12-01','admin@gmail.com','123456','999999999','M','72222222',null,null,1);
+insert into usuario values (null,'roger123', 'Roger', 'Pomacarhua', '1994-12-01','admin@gmail.com','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y','999999999','M','72222222',null,null,1,1);
 
 insert into marca values (null, 'Samsung', null, null, 1),
 (null, 'LG', null, null, 1),

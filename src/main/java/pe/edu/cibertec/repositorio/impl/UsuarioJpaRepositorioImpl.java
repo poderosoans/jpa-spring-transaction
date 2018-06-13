@@ -56,5 +56,16 @@ public class UsuarioJpaRepositorioImpl implements UsuarioRepositorio{
         }
 
     }
+
+    @Override
+    public Usuario findByUserName(String username) {
+        try { 
+            Usuario user = (Usuario) em.createQuery( "SELECT u from Usuario u where u.username = :username") 
+            .setParameter("username", username).getSingleResult(); 
+            return user; 
+        } catch (NoResultException e) {
+            return null; 
+        }
+    }
     
 }
